@@ -12,3 +12,10 @@ print(q2_answer)
 # print(q3counter.counter)
 # q3counter()
 # print(q3counter.counter)
+
+
+def find_missing(incomplete_list):
+    return [x for x in range(incomplete_list[0], incomplete_list[-1]+1) 
+                               if x not in incomplete_list]
+incomplete_list = [1, 2, 4, 5, 6]
+print(find_missing(incomplete_list))

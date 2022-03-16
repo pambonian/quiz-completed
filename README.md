@@ -19,7 +19,11 @@ q3counter.counter = 0
 4.  Using Python how would you find the missing number in this list? 
 incomplete_list = [1, 2, 4, 5, 6]
 ```
-<!-- answer here -->
+def find_missing(incomplete_list):
+    return [x for x in range(incomplete_list[0], incomplete_list[-1]+1) 
+                               if x not in incomplete_list]
+incomplete_list = [1, 2, 4, 5, 6]
+print(find_missing(incomplete_list))
 ```
 5.	Write a javascript function isEmpty() that will return true if an object is empty and false if it is not (excluding default prototype properties). Assume you do not have access to Lodash or other libraries. Example: let empty_object = {}; console.log(isEmpty(empty_object)); // true let not_empty_object = { foo : 'bar' }; console.log(isEmpty(not_empty_object)); // false 
 
