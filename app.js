@@ -22,7 +22,6 @@ function isEmpty(obj) {
         return true;
 };
 
-
 let empty_object = {}; 
 console.log(isEmpty(empty_object)); //true 
 let not_empty_object = { foo : 'bar' }; 
