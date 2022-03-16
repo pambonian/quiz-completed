@@ -28,7 +28,21 @@ print(find_missing(incomplete_list))
 5.	Write a javascript function isEmpty() that will return true if an object is empty and false if it is not (excluding default prototype properties). Assume you do not have access to Lodash or other libraries. Example: let empty_object = {}; console.log(isEmpty(empty_object)); // true let not_empty_object = { foo : 'bar' }; console.log(isEmpty(not_empty_object)); // false 
 
 ```
-<!-- answer here -->
+function isEmpty(obj) {
+        if (obj == null) return true;
+        if (obj.length > 0)    return false;
+        if (obj.length === 0)  return true;
+        if (typeof obj !== "object") return true;
+        for (var key in obj) {
+            if (hasOwnProperty.call(obj, key)) return false;
+        }
+        return true;
+};
+
+let empty_object = {}; 
+console.log(isEmpty(empty_object)); //true 
+let not_empty_object = { foo : 'bar' }; 
+console.log(isEmpty(not_empty_object)); // false
 ```
 
 6.	Write the skeleton HTML for a table that has a header, body, and footer with three columns and one row. 
