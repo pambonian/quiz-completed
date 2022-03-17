@@ -48,9 +48,53 @@ console.log(isEmpty(not_empty_object)); // false
 6.	Write the skeleton HTML for a table that has a header, body, and footer with three columns and one row. 
 
 ```
-<!-- answer here -->
-```
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Question 6</title>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="3">Table Header</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Column One</td>
+                <td>Column Two</td>
+                <td>Column Three</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <th colspan="3">Table Footer</th>
+        </tfoot>
+    </table>
+</body>
+
+</html>
+```
+Table CSS:
+```
+table,
+td {
+    border: 2px solid black;
+    padding: 3px;
+}
+
+thead,
+tfoot {
+    background-color: black;
+    color: white;
+}
+```
 7.	Write a Python function that will load a json file located in the directory /home/application_user/stats.json, once loaded access the data located in 'school_name'
 
 ```
