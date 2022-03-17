@@ -98,13 +98,20 @@ tfoot {
 7.	Write a Python function that will load a json file located in the directory /home/application_user/stats.json, once loaded access the data located in 'school_name'
 
 ```
-<!-- answer here -->
+with open(r'C:\Users\Patrick\Desktop\home\application_user\stats.json') as f:
+    config = json.load(f)
+for school in config['school_name']:
+    print("School Name:", school['name'])
 ```
 
 8.	What is the difference between "var" and "let" in javascript? 
 
 ```
-<!-- answer here -->
+Scope is the main difference between the two. 
+
+The 'var' keyword has been part of JavaScript since it was first introduced. A variable declared using 'var' is globally scoped and remains defined/available anywhere within a JavaScript program. Such 'var' variables can also be re-declared/updated in the same global scope. 
+
+The 'let' keyword was added to JavaScript in 2015(ES6). With variables declared using 'let', such variables are limited to the block or expression where it is used. A 'let' is only read/written if it has been declared; by calling an undeclared 'let' variable, the result is an 'undefined' value by default. A 'let' variable can be updated after it's been declared, but it cannot be re-declared while operating in the same scope. While it is possible to declare a 'let' globally, a 'let' variable does not create properties of the window object - 'let' variables cannot be accessed globally.
 ```
 
 9.  Write out the Postgres command to restore a database backup to a database with the following information, assume the password will exist in a .pgpass file, be sure to send stderr and stdout to a logile named test_restore.log:

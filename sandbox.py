@@ -1,3 +1,12 @@
+import json
+
+with open(r'C:\Users\Patrick\Desktop\home\application_user\stats.json') as f:
+    config = json.load(f)
+for school in config['school_name']:
+    print("School Name:", school['name'])
+# print (len(config))
+
+
 student_list = ['Alan', 'Alec', 'Adam', 'Charlie', 'Mac']
 print(student_list[3])
 
