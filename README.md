@@ -168,7 +168,19 @@ checkString('hellod').then(successCallback, failureCallback);
 13.	Write a Python function isValidPhone() that returns a boolean and uses regex to determine if a string is in the phone number format ###-###-#### (e.g. 727-999-0001).
 
 ```
-<!-- answer here -->
+import re
+
+phonenumber = "516-111-2222"
+regex = "\w{3}-\w{3}-\w{4}"
+
+def isValidPhone():
+    if re.search(regex, phonenumber):
+        print("Valid phone number format")
+        return True
+    else:
+        print("Invalid phone number format")
+
+print(isValidPhone())
 ```
 
 14.	Why would the following query fail? Assume all table names, column references, and implied data types are correct. SELECT MAX(r.facility) AS max, ra.amount, rl.quantity, rl.item_number FROM request r JOIN request_line rl ON rl.request_id = r.id GROUP BY r.contact, ra.amount, rl.item_number;
