@@ -144,7 +144,25 @@ JOIN and INNER JOIN are functionally equivalent with SQL, since INNER JOIN is us
 12.	Write a javascript function checkString(foo) which takes a parameter `foo`. The function should return a Promise that resolves if `foo` is equal to "hello", otherwise the Promise should reject. Below this function, write code that invokes checkString() and outputs (in the console) "Good!" upon Promise success or "Bad!" upon Promise failure. Do not use jQuery.
 
 ```
-<!-- answer here -->
+function successCallback(result) {
+    console.log("Success " + result);
+}
+
+function failureCallback(error) {
+    console.log("Failure " + error);
+}
+
+function checkString(foo) {
+    return new Promise(function (resolve, reject) {
+        if (foo == 'hello')
+            resolve('Good!');
+        else
+            reject('Bad!');
+    });
+}
+
+checkString('hello').then(successCallback, failureCallback);
+checkString('hellod').then(successCallback, failureCallback);
 ```
 
 13.	Write a Python function isValidPhone() that returns a boolean and uses regex to determine if a string is in the phone number format ###-###-#### (e.g. 727-999-0001).
