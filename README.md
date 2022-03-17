@@ -183,7 +183,10 @@ def isValidPhone():
 print(isValidPhone())
 ```
 
-14.	Why would the following query fail? Assume all table names, column references, and implied data types are correct. SELECT MAX(r.facility) AS max, ra.amount, rl.quantity, rl.item_number FROM request r JOIN request_line rl ON rl.request_id = r.id GROUP BY r.contact, ra.amount, rl.item_number;
+14.	Why would the following query fail? Assume all table names, column references, and implied data types are correct. 
+```
+SELECT MAX(r.facility) AS max, ra.amount, rl.quantity, rl.item_number FROM request r JOIN request_line rl ON rl.request_id = r.id GROUP BY r.contact, ra.amount, rl.item_number;
+```
 
 ```
 <!-- answer here -->
@@ -192,7 +195,9 @@ print(isValidPhone())
 15. Write an Ansible YAML script to install the package tesseract and symbolically link the binary to the path /usr/local/bin/tesseract, do this for a RHEL or Centos system, assume it will run locally.
 
 ```
-<!-- answer here -->
+- name: install tesseract package
+  action: >
+    {{ ansible_pkg_mgr }} name=vim state=present update_cache=yes
 ```
 
 
