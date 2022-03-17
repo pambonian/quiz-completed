@@ -115,12 +115,17 @@ The 'let' keyword was added to JavaScript in 2015(ES6). With variables declared 
 ```
 
 9.  Write out the Postgres command to restore a database backup to a database with the following information, assume the password will exist in a .pgpass file, be sure to send stderr and stdout to a logile named test_restore.log:
-
+```
 Host: test_database.rds.aws.com
 Port: 5432
 User: test_role
 Database: test_database
 Backup location: /backups/test_database_backup_03_2022.sql
+```
+Answer:
+```
+
+```
 
 10.	Write a jQuery event handler that will fire when a form with ID #foo is submitted and prevents the form from submitting. 
 
