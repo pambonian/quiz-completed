@@ -195,19 +195,76 @@ SELECT MAX(r.facility) AS max, ra.amount, rl.quantity, rl.item_number FROM reque
 15. Write an Ansible YAML script to install the package tesseract and symbolically link the binary to the path /usr/local/bin/tesseract, do this for a RHEL or Centos system, assume it will run locally.
 
 ```
-- name: install tesseract package
-  action: >
-    {{ ansible_pkg_mgr }} name=vim state=present update_cache=yes
+---
+-   name: Tesseract Install
+    hosts: all
+    become: true
+    tasks:
+        - shell: npm i tesseract.js # https://www.npmjs.com/package/tesseract.js
+          package: Tesseract
+          state: latest
+        - name: Add Tesseract Bin to Path
+          lineinfile: 
+            dest: /usr/local/bin/tesseract
+            regexp: '^test -s'
+            line: '[[ -s "$HOME/.tesseract/scripts/tesseract" ]] && source "$HOME/.tesseract/scripts/tesseract"'
+        - name: Reload Path
+          shell: source /usr/local/bin/tesseract
+          args:
+            executable: /bin/tesseract
+
 ```
 
 
 # Additional coding
 
 Part 1. Create a Django model to store customer, first name, middle, last name and email address.
+```
+from django.db import models
+
+class Customer(models.Model):
+    firstName = models.Charfield(max_length=100)
+    middleName = models.Charfield(max_length=100)
+    lastName = models.Charfield(max_length=100)
+    email = models.Charfield(max_length=100)
+
+
+```
 
 Part 2. Write a form in HTML and Django with text boxes for first, middle and last name, as well as a checkbox input labeled "Enroll" include a Submit Button.
+```
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save();
+    else:
+        form = UserCreationForm()
+    return render(request, 'users/register.html', {'form;: form})
+```
+
+```
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4>Enroll</legend>
+                {{ form }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+```
 
 Part 3. Write the Django view that would process someone enolling or unenolling based on the checkbox.
+```
 
+```
 Part 4 (Bonus). Describe how this page could be modified to detect if previously set values in the inputs had changed. 
+```
+
+```
 
