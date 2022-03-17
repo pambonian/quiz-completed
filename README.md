@@ -127,16 +127,18 @@ Answer:
 
 ```
 
-10.	Write a jQuery event handler that will fire when a form with ID #foo is submitted and prevents the form from submitting. 
+10.	Write a jQuery event handler that will fire when a form with ID #foo is submitted and prevents the form from submitting.
 
 ```
-<!-- answer here -->
+$( "#foo" ).submit(function( event ) {
+    event.preventDefault();
+})
 ```
 
 11.	What is the difference between JOIN and INNER JOIN in SQL? 
 
 ```
-<!-- answer here -->
+JOIN and INNER JOIN are functionally equivalent with SQL, since INNER JOIN is used by default if JOIN is used alone. If join type is not specified, then INNER is implicit.
 ```
 
 12.	Write a javascript function checkString(foo) which takes a parameter `foo`. The function should return a Promise that resolves if `foo` is equal to "hello", otherwise the Promise should reject. Below this function, write code that invokes checkString() and outputs (in the console) "Good!" upon Promise success or "Bad!" upon Promise failure. Do not use jQuery.
