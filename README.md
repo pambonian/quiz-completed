@@ -264,7 +264,7 @@ def register(request):
 {% endblock content %}
 ```
 
-Part 3. Write the Django view that would process someone enolling or unenolling based on the checkbox.
+Part 3. Write the Django view that would process someone enrolling or unenrolling based on the checkbox.
 ```
 
 ```
