@@ -223,8 +223,6 @@ class Customer(models.Model):
     middleName = models.Charfield(max_length=100)
     lastName = models.Charfield(max_length=100)
     email = models.Charfield(max_length=100)
-
-
 ```
 
 Part 2. Write a form in HTML and Django with text boxes for first, middle and last name, as well as a checkbox input labeled "Enroll" include a Submit Button.
