@@ -116,11 +116,11 @@ Host: test_database.rds.aws.com
 Port: 5432
 User: test_role
 Database: test_database
-Backup location: /backups/test_database_backup_03_2022.sql
+Backup location: /backups/test_database_backup_03_2022.sql /backups/test_database_backup_03_2022.sql
 ```
 Answer:
 ```
-
+psql -U test_role -d test_database -h test_database.rds.aws.com -p 5432 &>test_restore.log < /backups/test_database_backup_03_2022.sql 
 ```
 
 10.	Write a jQuery event handler that will fire when a form with ID #foo is submitted and prevents the form from submitting.
