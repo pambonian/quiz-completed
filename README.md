@@ -261,6 +261,6 @@ Part 3. Write the Django view that would process someone enolling or unenolling 
 ```
 Part 4 (Bonus). Describe how this page could be modified to detect if previously set values in the inputs had changed. 
 ```
-
+any(x in myforminstance.changed_data for x in ['firstName', 'middleName', 'lastName', 'email'])
 ```
 
