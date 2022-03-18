@@ -28,21 +28,15 @@ print(find_missing(incomplete_list))
 5.	Write a javascript function isEmpty() that will return true if an object is empty and false if it is not (excluding default prototype properties). Assume you do not have access to Lodash or other libraries. Example: let empty_object = {}; console.log(isEmpty(empty_object)); // true let not_empty_object = { foo : 'bar' }; console.log(isEmpty(not_empty_object)); // false 
 
 ```
-function isEmpty(obj) {
-        if (obj == null) return true;
-        if (obj.length > 0)    return false;
-        if (obj.length === 0)  return true;
-        if (typeof obj !== "object") return true;
-        for (var key in obj) {
-            if (hasOwnProperty.call(obj, key)) return false;
-        }
-        return true;
-};
+emptyObj = {}
 
-let empty_object = {}; 
-console.log(isEmpty(empty_object)); //true 
-let not_empty_object = { foo : 'bar' }; 
-console.log(isEmpty(not_empty_object)); // false
+function isObjectEmpty(obj){
+    if (Object.keys(obj).length == 0){
+        return true
+    }else{
+        return false
+    }
+}
 ```
 
 6.	Write the skeleton HTML for a table that has a header, body, and footer with three columns and one row. 
@@ -98,10 +92,12 @@ tfoot {
 7.	Write a Python function that will load a json file located in the directory /home/application_user/stats.json, once loaded access the data located in 'school_name'
 
 ```
-with open(r'C:\Users\Patrick\Desktop\home\application_user\stats.json') as f:
-    config = json.load(f)
-for school in config['school_name']:
-    print("School Name:", school['name'])
+import json
+
+fh = open('/home/application_user/stats.json')
+config = json.load(fh)
+
+print(config["school_name"])
 ```
 
 8.	What is the difference between "var" and "let" in javascript? 
@@ -144,25 +140,23 @@ JOIN and INNER JOIN are functionally equivalent with SQL, since INNER JOIN is us
 12.	Write a javascript function checkString(foo) which takes a parameter `foo`. The function should return a Promise that resolves if `foo` is equal to "hello", otherwise the Promise should reject. Below this function, write code that invokes checkString() and outputs (in the console) "Good!" upon Promise success or "Bad!" upon Promise failure. Do not use jQuery.
 
 ```
-function successCallback(result) {
-    console.log("Success " + result);
+function checkString(foo){
+    const myPromise = new Promise((resolve, reject) => {
+        if(foo == 'hello'){
+            resolve('Good!')
+        }else{
+            reject('Bad!')
+        }
+    })
+    return myPromise
 }
 
-function failureCallback(error) {
-    console.log("Failure " + error);
-}
-
-function checkString(foo) {
-    return new Promise(function (resolve, reject) {
-        if (foo == 'hello')
-            resolve('Good!');
-        else
-            reject('Bad!');
-    });
-}
-
-checkString('hello').then(successCallback, failureCallback);
-checkString('hellod').then(successCallback, failureCallback);
+checkString('hellos')
+    .then(res => {
+        console.log(res);
+    }).catch(error => {
+        console.log(error);
+    })
 ```
 
 13.	Write a Python function isValidPhone() that returns a boolean and uses regex to determine if a string is in the phone number format ###-###-#### (e.g. 727-999-0001).
@@ -170,26 +164,28 @@ checkString('hellod').then(successCallback, failureCallback);
 ```
 import re
 
-phonenumber = "516-111-2222"
-regex = "\w{3}-\w{3}-\w{4}"
-
-def isValidPhone():
+def isValidPhone(phonenumber):
+    regex = "^\d{3}-\d{3}-\d{4}$"
     if re.search(regex, phonenumber):
         print("Valid phone number format")
         return True
     else:
         print("Invalid phone number format")
+        return False
 
-print(isValidPhone())
+print(isValidPhone('772-766-0454'))
 ```
 
 14.	Why would the following query fail? Assume all table names, column references, and implied data types are correct. 
+
+Query:
 ```
 SELECT MAX(r.facility) AS max, ra.amount, rl.quantity, rl.item_number FROM request r JOIN request_line rl ON rl.request_id = r.id GROUP BY r.contact, ra.amount, rl.item_number;
 ```
+Answer:
 
 ```
-<!-- answer here -->
+We are attempting to access ra.amount with GROUP BY, but we did not specify the ra.amount with the JOIN in the example, therefore we wouldn't have access to it when attempting GROUP BY.
 ```
 
 15. Write an Ansible YAML script to install the package tesseract and symbolically link the binary to the path /usr/local/bin/tesseract, do this for a RHEL or Centos system, assume it will run locally.
