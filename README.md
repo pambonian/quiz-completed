@@ -173,7 +173,7 @@ def isValidPhone(phonenumber):
         print("Invalid phone number format")
         return False
 
-print(isValidPhone('772-766-0454'))
+print(isValidPhone('727-999-0001'))
 ```
 
 14.	Why would the following query fail? Assume all table names, column references, and implied data types are correct. 
@@ -189,6 +189,9 @@ We are attempting to access ra.amount with GROUP BY, but we did not specify the 
 ```
 
 15. Write an Ansible YAML script to install the package tesseract and symbolically link the binary to the path /usr/local/bin/tesseract, do this for a RHEL or Centos system, assume it will run locally.
+```
+Please note: I have no prior experience with Ansible/YAML, the answer below is my best guess under the circumstances
+```
 
 ```
 ---
@@ -226,16 +229,6 @@ class Customer(models.Model):
 ```
 
 Part 2. Write a form in HTML and Django with text boxes for first, middle and last name, as well as a checkbox input labeled "Enroll" include a Submit Button.
-```
-def register(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save();
-    else:
-        form = UserCreationForm()
-    return render(request, 'users/register.html', {'form;: form})
-```
 
 ```
 {% extends "quiz-answer/base.html" %}
@@ -246,13 +239,19 @@ def register(request):
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4>Enroll</legend>
-                {{ form }}
+                First name: <input type="text" name="Firstname" value= '{% if submitbutton == "Submit" %} {{ firstName }} {% endif %}'/><br><br>
+                Middle Name: <input type="text" name="Lastname" value= '{% if submitbutton == "Submit" %} {{ middleName }} {% endif %}'/><br><br>
+                Last name: <input type="text" name="Lastname" value= '{% if submitbutton == "Submit" %} {{ lastName }} {% endif %}'/><br><br>
             </fieldset>
             <div class="checkbox">
-                <input id="check1" type="checkbox" class="styled" checked>
-                <label for="check1">
-                    Enroll
-                </label>
+                <form action="" method="post">
+                    <label class="checkbox">
+                        <input type="checkbox" name="enrollcheck" class="styled" id="check_1" value="EnrollInput" checked>
+                    </label>
+                    <label for="check_1">
+                        Enroll
+                    </label>
+                </form>
             </div>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Submit</button>
@@ -264,10 +263,20 @@ def register(request):
 
 Part 3. Write the Django view that would process someone enrolling or unenrolling based on the checkbox.
 ```
+def check_enroll(request):
+    ...
+    if request.method == "POST":
+        display_type = request.POST.get("enrollcheck", None)
+        if enrollcheck in ["enrollbox"]:
+            return ['email', 'password', 'enroll_yes']
+        return ['email', 'password', 'enroll_no']
 
 ```
 Part 4 (Bonus). Describe how this page could be modified to detect if previously set values in the inputs had changed. 
 ```
-any(x in myforminstance.changed_data for x in ['firstName', 'middleName', 'lastName', 'email'])
+Could possibly use something similar to the following:
+```
+```
+any(x in myforminstance.changed_data for x in ['firstName', 'middleName', 'lastName', 'email', 'enrollcheck'])
 ```
 
