@@ -248,11 +248,18 @@ def register(request):
                 <legend class="border-bottom mb-4>Enroll</legend>
                 {{ form }}
             </fieldset>
+            <div class="checkbox">
+                <input id="check1" type="checkbox" class="styled" checked>
+                <label for="check1">
+                    Enroll
+                </label>
+            </div>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Submit</button>
             </div>
         </form>
     </div>
+{% endblock content %}
 ```
 
 Part 3. Write the Django view that would process someone enolling or unenolling based on the checkbox.
